@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block header %}
+{% include "header.html" %}
+{% endblock header %}
+{% block body %}
+<body>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign Up</button>
+  </form>
+  {{msg}}
+</body>
+{% endblock body %}
+</html>

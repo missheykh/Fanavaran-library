@@ -1,0 +1,22 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% if not user.is_authenticated %}
+    <h2>To See The Book List Please Login First</h2>
+    {% endif %}
+
+    <style>ul {  list-style-type: none;} li{display: inline-block;padding:20px;} a{text-decoration: none; color: blueviolet;}</style>
+     <ul>
+            {% if user.is_authenticated %}
+            <li>Hi  {{user.username}}!  Welcome!</li>
+                <li> <a href="{% url 'lib_app:booklist'%}">books</a> </li>
+                <li> <a href="{% url 'lib_app:search'%}">search</a> </li> 
+                <li><a href="{% url 'lib_app:logout' %}">logout</a></li>
+            {% else %}
+                <li><a href="{% url 'lib_app:login' %}">login</a></li>
+                <li><a href="{% url 'register' %}">register</a></li>
+            {% endif %}
+     </ul>
+</head>
